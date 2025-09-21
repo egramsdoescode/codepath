@@ -2,7 +2,7 @@
 
 
 def nanana_batman(x):
-    na_str += ""
+    na_str = ""
     for _ in range(x):
         na_str += "na"
     return f"{na_str} batman!"
@@ -192,7 +192,7 @@ print(make_divisible_by_k(nums, 4))
 
 
 def exclusive_elemts(lst1, lst2):
-    return list(set(lst1).difference(set(lst2))) + list(set(lst2).difference(set(lst1)))
+    return list(set(lst1) ^ set(lst2))
 
 
 print("\n--- Problem 8 ---")
