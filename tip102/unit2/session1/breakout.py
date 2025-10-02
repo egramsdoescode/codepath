@@ -6,10 +6,7 @@
 
 
 def lineup(artists, set_times):
-    lineup_dict = {}
-    for artist, time in zip(artists, set_times):
-        lineup_dict[artist] = time
-    return lineup_dict
+    return {artist: time for artist, time in zip(artists, set_times)}
 
 
 artists1 = ["Kendrick Lamar", "Chappell Roan", "Mitski", "Rosalia"]

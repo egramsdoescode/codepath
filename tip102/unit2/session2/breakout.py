@@ -1,3 +1,26 @@
+from math import inf
+
+# Lecture Problem
+
+
+def two_sum(nums, target):
+    seen = {}
+    for i in range(len(nums)):
+        complement = target - nums[i]
+        if complement in seen:
+            return [seen[complement], i]
+        seen[nums[i]] = i
+
+
+print("\n--- Lecture Problem: Two Sum ---")
+
+# answer should be [4, 5]
+print(two_sum([1, 2, 3, 4, 5], 9))
+
+# answer should be [1, 2]
+print(two_sum([6, 3, 5], 8))
+
+
 # 1
 
 # U: Given a list of species dictionaries, return the name of the species with the smallest population
@@ -6,7 +29,7 @@
 
 
 def most_endangered(species_list):
-    min = float("inf")
+    min = inf
     priority = {}
     for creature in species_list:
         if creature["population"] < min:
@@ -37,7 +60,6 @@ def navigate_research_station(station_layout, observations):
         distance += abs(
             station_dict[observations[i]] - station_dict[observations[i - 1]]
         )
-        print(f"Distance after {observations[i]}: {distance}")
 
     return distance
 
@@ -54,19 +76,24 @@ print(navigate_research_station(station_layout2, observations2))
 
 # 4
 
+
 def prioritize_observations(observed_species, priority_species):
     priority_dict = {}
     result = []
+    leftover = []
     for species in priority_species:
         priority_dict[species] = []
 
     for species in observed_species:
-        if species in priority_species:
-            result.append(species)
+        if species in priority_dict:
+            priority_dict[species].append(species)
+        else:
+            leftover.append(species)
 
     for value in priority_dict.values():
         result.extend(value)
 
+    result.extend(sorted(leftover))
     return result
 
 
